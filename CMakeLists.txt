@@ -5,4 +5,5 @@ add_executable(containers main.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+set(CPACK_GENERATOR "ZIP;DEB")
 include(CPack)
