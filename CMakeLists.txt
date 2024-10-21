@@ -18,10 +18,15 @@ install(TARGETS containers DESTINATION bin)
 include(CPack)
 
 # Устанавливаем генераторы пакетов (DEB для Linux, ZIP для Windows)
-set(CPACK_GENERATOR "DEB;ZIP")
+if (WIN32)
+  set(CPACK_GENERATOR "ZIP")
+else()
+  set(CPACK_GENERATOR "DEB")
+endif()
 
 # Настраиваем версию пакета
 set(CPACK_PACKAGE_VERSION "0.1.0")
 
 # Контактные данные для пакета (можно указать свои данные)
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Your Name")  # Укажите имя мейнтейнера для DEB пакета
 set(CPACK_PACKAGE_CONTACT "example@example.com")
