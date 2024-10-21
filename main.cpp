@@ -110,6 +110,9 @@ int main(){
     }
     std::cout<<"\n";
     c.push_back(30);
+     for(int i=0;i<c.size();i++){
+        std::cout<<c[i]<<" ";
+    }
     std::cout<<"\n";
     c.insert(c.size()/2, 20);
     for(int i=0;i<c.size();i++){
