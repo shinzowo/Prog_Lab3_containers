@@ -8,8 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Основной исполняемый файл
 add_executable(containers main.cpp)
 
-# Опции компилятора (добавляем опцию -fconcepts для поддержки концептов в GCC)
-target_compile_options(containers PRIVATE -fconcepts)
+# Опции компилятора для поддержки концептов в GCC
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(containers PRIVATE -fconcepts)
+endif()
 
 # Устанавливаем путь для исполняемых файлов при установке пакета
 install(TARGETS containers DESTINATION bin)
