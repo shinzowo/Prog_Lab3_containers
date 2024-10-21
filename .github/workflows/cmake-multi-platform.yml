@@ -52,8 +52,8 @@ jobs:
 
       - name: Build
         run: |
-          cmake --build build --config ${{ matrix.build_type }}
-          cmake --build build --target package --config ${{ matrix.build_type }}
+          cmake --build build --config ${{ matrix.build_type }} --verbose
+          cmake --build build --target package --config ${{ matrix.build_type }} --verbose
 
       - name: Create Release
         id: create_release
