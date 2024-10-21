@@ -71,6 +71,11 @@ jobs:
       # Execute tests defined by the CMake configuration. Note that --build-config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
+    
+    - name: Build and Package
+      run: |
+        cmake --build . --config Release
+        cpack -G DEB
 
     - name: Create Release
       id: create_release
@@ -90,7 +95,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/containers-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
+        asset_path: ./containers-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
         asset_name: containers-0.1.0-${{ matrix.os_short}}.${{ matrix.cpack_type }}
         asset_content_type: applications/${{ matrix.cpack_type}}
 
