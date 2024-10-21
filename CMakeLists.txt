@@ -5,13 +5,13 @@ project(containers VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
 # Основной исполняемый файл
 add_executable(containers main.cpp)
 
 # Опции компилятора для поддержки концептов в GCC
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    target_compile_options(containers PRIVATE -fconcepts)
-endif()
+target_compile_options(containers PRIVATE -fconcepts)
 
 # Устанавливаем путь для исполняемых файлов при установке пакета
 install(TARGETS containers DESTINATION bin)
