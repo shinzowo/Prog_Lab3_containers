@@ -54,8 +54,6 @@ jobs:
         run: |
           cmake --build build --config ${{ matrix.build_type }}
           cmake --build build --target package --config ${{ matrix.build_type }}
-      - name: List files in build directory
-        run: ls -la ./build
 
       - name: Create Release
         id: create_release

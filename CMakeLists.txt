@@ -5,10 +5,8 @@ project(containers VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-
 # Основной исполняемый файл
-add_executable(containers main.cpp)
+add_executable(containers main.cpp custom_vector.h custom_forward_list.h custom_list.h)
 
 # Опции компилятора для поддержки концептов в GCC
 target_compile_options(containers PRIVATE -fconcepts)
@@ -23,9 +21,7 @@ include(CPack)
 set(CPACK_GENERATOR "DEB;ZIP")
 
 # Настраиваем версию пакета
-set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
-set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
-set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_VERSION "0.1.0")
 
 # Контактные данные для пакета (можно указать свои данные)
 set(CPACK_PACKAGE_CONTACT "example@example.com")
