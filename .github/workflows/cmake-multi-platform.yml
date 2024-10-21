@@ -6,11 +6,11 @@ name: CMake Build Matrix
 # Controls when the action will run. Triggers the workflow on push
 on: 
   push:
-    branches: [ "master" ]
   pull_request:
   release:
-    # tags:
-    # - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    types: [published]  # Событие будет запущено при публикации релиза
+    tags:
+      - 'v*'  # Запускать для тегов, начинающихся с v
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -173,6 +173,7 @@ jobs:
           name: ${{ matrix.config.artifact }}
 
       - name: Upload release asset
+        if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'creat
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
