@@ -17,9 +17,13 @@ install(TARGETS containers DESTINATION bin)
 # Включаем CPack для создания пакетов (DEB и ZIP)
 include(CPack)
 
-set(CPACK_GENERATOR "DEB")  # Добавьте ZIP, если хотите его тоже
+set(CPACK_GENERATOR "DEB;ZIP")
 set(CPACK_PACKAGE_NAME "containers")
 set(CPACK_PACKAGE_VERSION "0.1.0")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Your Name")  # Укажите ваше имя
-set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "My container package")
-set(CPACK_PACKAGE_CONTACT example@example.com)
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "My container package")
+set(CPACK_PACKAGE_VENDOR "My Company")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Your Name")  # Важно для DEB
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_NAME}")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.27)")
+set(CPACK_SOURCE_GENERATOR "TGZ;ZIP")
+
