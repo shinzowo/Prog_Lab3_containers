@@ -66,8 +66,11 @@ jobs:
         cmake --build . --config ${{ matrix.build_type }}
         cmake --build . --target package --config ${{ matrix.build_type }}
         cpack -C ${{ matrix.build_type }}
-    - name: List build directory
-      run: ${{ matrix.os == 'ubuntu-latest' && 'ls -la' || 'dir' }}
+
+    - name: List CPack output
+      run: |
+        echo "Listing generated packages:"
+        find . -name "*.deb" -o -name "*.zip" -o -name "*.exe" -o -name "*.sh" -o -name "*.tar.gz"
 
     - name: Create Release
       id: create_release
