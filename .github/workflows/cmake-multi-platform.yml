@@ -31,12 +31,12 @@ jobs:
             c_compiler: gcc
             cpp_compiler: g++
             generator: -G "MinGW Makefiles"
-            cpack: zip
+            cpack_type: zip
           - os: ubuntu-latest
             os_short: Linux
             c_compiler: gcc
             cpp_compiler: g++
-            cpack: deb
+            cpack_type: deb
 
     steps:
     - uses: actions/checkout@v4
