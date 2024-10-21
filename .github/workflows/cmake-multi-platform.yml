@@ -72,11 +72,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
 
-    - name: Package with CPack
-      run: |
-        cpack -G ${{ matrix.cpack_type }}
-        ls -la .
-
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
